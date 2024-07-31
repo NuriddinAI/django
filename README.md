@@ -1,2 +1,2 @@
 # django
-This repository contains small websites projects which are created by django 
+This repository contains small website projects which are created by django 
