@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Personal Website</h1>
+        <ul>
+            <li><a href="{% url 'videos_list' %}"><h2>Videos</h2></a></li>
+            <li><a href="{% url 'songs_list' %}"><h2>Songs</h2></a></li>
+        </ul>
+    </header>
+    <main>
+        <section id="videos">
+
+            {% for video in videos %}
+            <div class="media-item">
+                <h3>{{ video.title }}</h3>
+                <video controls>
+                    <source src="{{ video.file.url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>{{ video.description }}</p>
+            </div>
+            {% endfor %}
+        </section>
+        <section id="songs">
+
+            {% for song in songs %}
+            <div class="media-item">
+                <h3>{{ song.title }}</h3>
+                <audio controls>
+                    <source src="{{ song.file.url }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p>{{ song.description }}</p>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 My Personal Website</p>
+    </footer>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
