@@ -1,0 +1,45 @@
+{% extends 'store/base.html' %}
+
+{% block title %}Product List{% endblock %}
+
+{% block content %}
+    <!-- Mahsulotlar ro'yxati kodlari shu yerga qo'shiladi -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Computer Store</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Computer Store</h1>
+        <div class="row">
+            {% for product in products %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
+                        </a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
+                            </h4>
+                            <h5>${{ product.price }}</h5>
+                            <p class="card-text">{{ product.description|truncatewords:20 }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+{% endblock %}
