@@ -11,4 +11,4 @@ Technologies Used:
 
 Website view
 
-![image](../django/computer_sale/images/view_of_computer_sale.png)
+![image](../computer_sale/images/view_of_computer_sale.png)
